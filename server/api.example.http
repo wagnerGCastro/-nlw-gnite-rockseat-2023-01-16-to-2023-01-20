@@ -1,0 +1,18 @@
+
+### index
+GET http://localhost:3333
+
+### habits
+POST http://localhost:3333/habits
+Content-Type: application/json
+
+{
+  "title": "New Habit 2",
+  "habitWeekDays": [0, 1, 2]
+}
+
+### day
+GET http://localhost:3333/day?date=2023-01-04T03:00:00.000Z
+Content-Type: application/json
+
+
