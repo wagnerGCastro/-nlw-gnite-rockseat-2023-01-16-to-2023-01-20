@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Text, View, ScrollView, Alert } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 
 import { api } from '../lib/axios';
 import { generateRangeDatesFromYearStart } from '../utils/generate-range-between-dates';
@@ -10,19 +10,17 @@ import { Loading } from '../components/Loading';
 import { HabitDay, DAY_SIZE } from '../components/HabitDay';
 import dayjs from 'dayjs';
 
+const weekDays = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'];
+const datesFromYearStart = generateRangeDatesFromYearStart();
+const minimunSummaryDatesSizes = 18 * 5;
+const amountOfDaysToFill = minimunSummaryDatesSizes - datesFromYearStart.length
+
 type SummaryProps = Array<{
   id: string;
   date: string;
   amount: number;
   completed: number;
 }>
-
-
-const weekDays = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'];
-const datesFromYearStart = generateRangeDatesFromYearStart();
-const minimunSummaryDatesSizes = 18 * 5;
-const amountOfDaysToFill = minimunSummaryDatesSizes - datesFromYearStart.length
-
 
 export function Home() {
   const [loading, setLoading] = useState(true)
@@ -43,9 +41,9 @@ export function Home() {
     }
   }
 
-  useEffect(() => {
-    fetchData()
-  }, [])
+  useFocusEffect(useCallback(() => {
+      fetchData()
+    }, []))
 
   if (loading) {
     return (
