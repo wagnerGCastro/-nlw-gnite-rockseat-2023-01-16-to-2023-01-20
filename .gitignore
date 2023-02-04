@@ -15,3 +15,6 @@ web-build/
 readme.txt
 
 .vscode
+docker-compose.stage.yaml
+.docker/logs/*
+.env.staging.docker
