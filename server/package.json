@@ -4,7 +4,9 @@
   "description": "",
   "main": "soma.js",
   "scripts": {
-    "dev": "tsx --watch src/server.ts"
+    "build": "npx tsx --sourceMap -p ./",
+    "dev": "npx tsx --watch src/server.ts",
+    "start": "node build/index.js"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +30,6 @@
     "npm": ">=8.19.3"
   },
   "prisma": {
-    "seed": "tsx prisma/seeds/seed.ts"
+    "seed": "npx tsx prisma/seeds/seed.ts"
   }
 }
