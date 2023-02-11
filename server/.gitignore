@@ -1,4 +1,10 @@
 node_modules
+__node_modules
 .env
 
 api.teste.http
+package-lock.json
+
+dev.db
+build
+dist
