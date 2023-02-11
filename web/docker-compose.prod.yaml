@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  web-production:
+    build:
+      context: ./
+      target: production-build-stage
+    ports:
+      - "3030:3030"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+        reservations:
+          cpus: "0.1"
+          memory: 128M
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

@@ -1,0 +1,23 @@
+version: "3.5"
+
+services:
+  ### NODE ##############################################
+  web-development:
+    build:
+      context: ./.docker/bin/node
+      dockerfile: Dockerfile
+    entrypoint: sh -c "npm install && npm run dev"
+    volumes:
+      - ./:/var/www
+    ports:
+      - "3030:3030"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+        reservations:
+          cpus: "0.1"
+          memory: 128M
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

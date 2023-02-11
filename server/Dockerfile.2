@@ -1,0 +1,21 @@
+FROM node:18.13.0
+
+RUN groupadd api-group
+RUN useradd -ms /bin/bash api-user
+WORKDIR /app
+RUN chown -R api-user:api-group /app
+
+USER api-user
+COPY package.json /app/
+RUN yarn install
+
+COPY . /app/
+
+COPY src/ /app/
+COPY prisma/ /app/prisma
+
+# CMD node build/src/server.js
+
+CMD ["npm", "run", "start"]
+
+EXPOSE 3333
