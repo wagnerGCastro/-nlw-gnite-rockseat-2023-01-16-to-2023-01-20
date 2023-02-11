@@ -1,20 +1,20 @@
 version: "3"
 
 services:
-  web-production:
+  server-production:
     build:
       context: ./
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.apline
       target: production-build-stage
     ports:
-      - "8080:8080"
+      - "3333:3333"
     deploy:
       resources:
         limits:
           cpus: "0.5"
-          memory: 256M
+          memory: 512M
         reservations:
           cpus: "0.1"
-          memory: 128M
+          memory: 256M
     extra_hosts:
       - "host.docker.internal:host-gateway"
