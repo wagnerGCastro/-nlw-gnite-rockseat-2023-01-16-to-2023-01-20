@@ -20,3 +20,4 @@ readme.txt
 docker-compose.stage.yaml
 .docker/logs/*
 .env.staging.docker
+vite.config.ts.*

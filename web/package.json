@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host 0.0.0.0",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "dev": "vite --host 0.0.0.0 --mode development",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0 --mode production"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.0.1",
