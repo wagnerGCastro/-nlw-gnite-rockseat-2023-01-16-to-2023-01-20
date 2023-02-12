@@ -3,3 +3,9 @@ _node_modules
 __node_modules
 dist
 package-lock.json
+.docker
+.vscode
+build
+Dockerfile
+readme.txt
+.gitignore
