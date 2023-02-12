@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: developer
+  name: nlw-setup-web-api
+  annotations:
+    keel.sh/policy: regexp:^(latest)$
+  labels:
+    app: nlw-setup-web-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nlw-setup-web-api
+  template:
+    metadata:
+      labels:
+        app: nlw-setup-web-api
+    spec:
+      imagePullSecrets:
+        - name: docker-hub
+      containers:
+        - name: nlw-setup-web-api
+          image: wagnercastro/nlw-setup-web
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: 250m
+              memory: 256Mi
+            requests:
+              cpu: 125m
+              memory: 128Mi
